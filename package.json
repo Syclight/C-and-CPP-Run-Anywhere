@@ -1,6 +1,6 @@
 {
 	"name": "c-cpp-run-anywhere",
-	"displayName": "c/c++ run anywhere",
+	"displayName": "C/C++ RunAnywhere",
 	"description": "let c or cpp run anywhere,without repeat config.",
 	"version": "0.0.1",
 	"publisher": "asheor",
@@ -13,28 +13,28 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:c-c---run-anywhere.helloWorld",
-		"onCommand:c-c---run-anywhere.Run",
-		"onCommand:c-c---run-anywhere.Run_s",
-		"onCommand:c-c---run-anywhere.Run_CS"
+		"onCommand:c-cpp-run-anywhere.helloWorld",
+		"onCommand:c-cpp-run-anywhere.Run",
+		"onCommand:c-cpp-run-anywhere.Run_s",
+		"onCommand:c-cpp-run-anywhere.Run_CS"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "c-c---run-anywhere.helloWorld",
+				"command": "c-cpp-run-anywhere.helloWorld",
 				"title": "Hello"
 			},
 			{
-				"command": "c-c---run-anywhere.Run",
+				"command": "c-cpp-run-anywhere.Run",
 				"title": "C&R C/C++"
 			},
 			{
-				"command": "c-c---run-anywhere.Run_s",
+				"command": "c-cpp-run-anywhere.Run_s",
 				"title": "C&R C/C++ -s"
 			},
 			{
-				"command": "c-c---run-anywhere.Run_CS",
+				"command": "c-cpp-run-anywhere.Run_CS",
 				"title": "Compile C/C++ -S"
 			}
 		]

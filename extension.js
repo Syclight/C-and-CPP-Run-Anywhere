@@ -9,11 +9,15 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+	const finishedStr = "C/C++ RunAnywhere: processing finished";
 	function paramStr(param){
 		const headStr = "gcc ";
 
 		const srcName = vscode.window.activeTextEditor.document.fileName;
 		let terminal = vscode.window.activeTerminal;
+		if (terminal == undefined){
+			terminal = vscode.window.createTerminal();
+		}
 		terminal.sendText('\n');
 
 		let tragName = (srcName.split("."))[0];
@@ -48,16 +52,18 @@ function activate(context) {
 				break;
 		}
 
+		vscode.window.showInformationMessage(finishedStr);
+
 	}
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "c-c---run-anywhere" is now active!');
+	console.log('Congratulations, your extension "c-cpp-run-anywhere" is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('c-c---run-anywhere.helloWorld', function () {
+	let disposable = vscode.commands.registerCommand('c-cpp-run-anywhere.helloWorld', function () {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
@@ -66,15 +72,15 @@ function activate(context) {
 
 	});
 
-	let runAnyWhere0 = vscode.commands.registerCommand('c-c---run-anywhere.Run', function () {
+	let runAnyWhere0 = vscode.commands.registerCommand('c-cpp-run-anywhere.Run', function () {
 		paramStr(0);
 	});
 
-	let runAnyWhere1 = vscode.commands.registerCommand('c-c---run-anywhere.Run_s', function () {
+	let runAnyWhere1 = vscode.commands.registerCommand('c-cpp-run-anywhere.Run_s', function () {
 		paramStr(1);
 	});
 
-	let runAnyWhere2 = vscode.commands.registerCommand('c-c---run-anywhere.Run_CS', function () {
+	let runAnyWhere2 = vscode.commands.registerCommand('c-cpp-run-anywhere.Run_CS', function () {
 		paramStr(2);
 	});
 
