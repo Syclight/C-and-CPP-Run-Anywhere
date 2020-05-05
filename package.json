@@ -4,7 +4,7 @@
 	"description": "let c or cpp run anywhere,without repeat config.",
 	"version": "0.0.1",
 	"publisher": "asheor",
-	"icon": "/test/icon/runAnywhere.bmp",
+	"icon": "icon/runAnywhere.bmp",
 	"repository": {},
 	"engines": {
 		"vscode": "^1.44.0"
