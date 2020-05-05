@@ -4,6 +4,7 @@
 	"description": "let c or cpp run anywhere,without repeat config.",
 	"version": "0.0.1",
 	"publisher": "ashqi",
+	"repository": {},
 	"engines": {
 		"vscode": "^1.44.0"
 	},

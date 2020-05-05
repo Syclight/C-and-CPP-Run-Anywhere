@@ -14,7 +14,7 @@ Compile C/C++ -S 编译成汇编代码
 
 需要安装gcc
 
-### 1.0.0
+### 0.0.1
 
 Initial release 第一次打包
 
