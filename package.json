@@ -1,8 +1,8 @@
 {
 	"name": "c-cpp-run-anywhere",
 	"displayName": "C/C++ RunAnywhere",
-	"description": "let c or cpp run anywhere,without repeat config.",
-	"version": "0.0.1",
+	"description": "Let c or cpp run anywhere,without repeat config.",
+	"version": "0.0.2",
 	"publisher": "asheor",
 	"icon": "icon/runAnywhere.bmp",
 	"repository": {},
@@ -13,29 +13,33 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:c-cpp-run-anywhere.helloWorld",
-		"onCommand:c-cpp-run-anywhere.Run",
-		"onCommand:c-cpp-run-anywhere.Run_s",
-		"onCommand:c-cpp-run-anywhere.Run_CS"
+		"onCommand:ccpprunanywhere.hello",
+		"onCommand:ccpprunanywhere.run",
+		"onCommand:ccpprunanywhere.run_s",
+		"onCommand:ccpprunanywhere.comp_s"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "c-cpp-run-anywhere.helloWorld",
-				"title": "Hello"
+				"command": "ccpprunanywhere.hello",
+				"title": "%command.ccpprunanywhere.hello%",
+				"category": "%category.ccpprunanywhere%"
 			},
 			{
-				"command": "c-cpp-run-anywhere.Run",
-				"title": "C&R C/C++"
+				"command": "ccpprunanywhere.run",
+				"title": "%command.ccpprunanywhere.run%",
+				"category": "%category.ccpprunanywhere%"
 			},
 			{
-				"command": "c-cpp-run-anywhere.Run_s",
-				"title": "C&R C/C++ -s"
+				"command": "ccpprunanywhere.run_s",
+				"title": "%command.ccpprunanywhere.run_s%",
+				"category": "%category.ccpprunanywhere%"
 			},
 			{
-				"command": "c-cpp-run-anywhere.Run_CS",
-				"title": "Compile C/C++ -S"
+				"command": "ccpprunanywhere.comp_s",
+				"title": "%command.ccpprunanywhere.comp_s%",
+				"category": "%category.ccpprunanywhere%"
 			}
 		]
 	},

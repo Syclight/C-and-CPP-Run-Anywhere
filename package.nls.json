@@ -1,0 +1,8 @@
+{
+    "command.ccpprunanywhere.hello":"hello",
+    "command.ccpprunanywhere.run":"run",
+    "command.ccpprunanywhere.run_s":"run -s",
+    "command.ccpprunanywhere.comp_s":"compile -S",
+    
+    "category.ccpprunanywhere":"runAnywhere"
+}

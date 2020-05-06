@@ -1,18 +1,28 @@
-# c-c---run-anywhere README
+# C/C++ RunAnywhere README
 
 全称 C/C++ Code Run Anywhere
 
-vccode打开c/cpp文件，立即编译并运行。 需要安装gcc。
+vccode打开c/cpp文件，立即编译并运行， 需要安装gcc。
+
+## Usage
+
 Ctrl + Shift + P 打开命令栏输入： 
 
-C&R C/C++ 编译并运行文件
-Compile C/C++ -S 编译成汇编代码
-
-与我联系：ashqi@hotmail.com
+run：编译并生成执行文件  
+run -s: 编译并生成执行文件（gcc的功能，只限c语言）  
+compile -S：编译成汇编代码（拓展名.s，可用文本文件打开）  
 
 ## Requirements
 
 需要安装gcc
+
+## Contact
+
+与我联系：ashqi@hotmail.com
+
+### 0.0.2
+
+修改了命令
 
 ### 0.0.1
 
