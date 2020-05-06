@@ -10,7 +10,7 @@ const vscode = require('vscode');
  */
 function activate(context) {
 	let finishedStr = "C/C++ RunAnywhere: processing finished";
-	const helloWorldStr = "Welcome use c/c++ run anywhere!"
+	const helloWorldStr = "Welcome use C/C++ RunAnywhere!"
 
 	function paramStr(param){
 		let headStr = "gcc ";
@@ -50,6 +50,7 @@ function activate(context) {
 				break;
 		}
 		terminal.sendText(commandStr);
+
 
 		switch(param){
 			case 0:
