@@ -11,7 +11,6 @@ const path = require('path');
 function activate(context) {
 	let finishedStr = "processing finished";
 	const helloWorldStr = "Welcome use C/C++ RunAnywhere!"
-	let g_currentPath = "";
 
 	function paramStr(param) {
 		let headStr = "gcc ";
@@ -41,10 +40,7 @@ function activate(context) {
 
 		let index = srcName.lastIndexOf(path.sep);
 		let fPath = srcName.substr(0, index + 1);
-		if (fPath != g_currentPath) {
-			g_currentPath = fPath;
-			terminal.sendText("cd " + g_currentPath);
-		}
+		terminal.sendText("cd " + fPath);
 
 		let commandStr = "";
 
