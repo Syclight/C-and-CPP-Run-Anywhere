@@ -1,6 +1,6 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const fs = require('fs');
+const path = require('path');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -9,52 +9,75 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	let finishedStr = "C/C++ RunAnywhere: processing finished";
+	let finishedStr = "processing finished";
 	const helloWorldStr = "Welcome use C/C++ RunAnywhere!"
+	let g_currentPath = "";
 
-	function paramStr(param){
+	function paramStr(param) {
 		let headStr = "gcc ";
 
 		const srcName = vscode.window.activeTextEditor.document.fileName;
 		let terminal = vscode.window.activeTerminal;
-		if (terminal == undefined){
+		if (terminal == undefined) {
 			terminal = vscode.window.createTerminal();
 		}
-		terminal.sendText('\n');
+
+		terminal.sendText('\nclear');
 
 		let strs = srcName.split(".");
 		let tragName = strs[0];
-		let type = strs[1];
+		let baseName = path.basename(tragName);
 
-		if (type === "cpp")
-		{
+		let exeFileName = tragName + '.exe';
+		let SFileName = tragName + '.s';
+
+		let type = strs[1];
+		let sourceExt = '.c';
+
+		if (type === "cpp") {
 			headStr = "g++ ";
+			sourceExt = '.cpp';
 		}
 
-		let index = srcName.lastIndexOf("\\");
-		let path = srcName.substr(0, index + 1);
-		terminal.sendText("cd " + path);
+		let index = srcName.lastIndexOf(path.sep);
+		let fPath = srcName.substr(0, index + 1);
+		if (fPath != g_currentPath) {
+			g_currentPath = fPath;
+			terminal.sendText("cd " + g_currentPath);
+		}
 
 		let commandStr = "";
-		
 
-		switch(param){
+
+		switch (param) {
 			case 0:
-				commandStr = headStr + "-o " + tragName + " " + srcName;
+				try {
+					if (fs.existsSync(exeFileName)) { fs.unlinkSync(exeFileName) }
+				} catch (error) {
+					vscode.window.showErrorMessage('错误：文件已经打开，无法覆盖编译，请关闭文件后再试。');
+					return;
+				}
+				commandStr = headStr + "-o " + baseName + " " + baseName + sourceExt;
 				break;
 			case 1:
 				commandStr = headStr + "-s " + srcName;
 				break;
 			case 2:
+				try {
+					if (fs.existsSync(SFileName)) { fs.unlinkSync(SFileName) }
+				} catch (error) {
+					vscode.window.showErrorMessage('错误：文件已经打开，无法覆盖编译，请关闭文件后再试。');
+					return;
+				}
 				commandStr = headStr + "-S " + srcName;
 				break;
 		}
 		terminal.sendText(commandStr);
 
-
-		switch(param){
+		
+		switch (param) {
 			case 0:
-				terminal.sendText(tragName + '.exe');
+				terminal.sendText('start ' + exeFileName);
 				break;
 			case 1:
 				break;
@@ -66,9 +89,6 @@ function activate(context) {
 
 	}
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "c-cpp-run-anywhere" is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
@@ -98,7 +118,7 @@ function activate(context) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
 	activate,

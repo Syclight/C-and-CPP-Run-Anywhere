@@ -2,7 +2,7 @@
 	"name": "c-cpp-run-anywhere",
 	"displayName": "C/C++ RunAnywhere",
 	"description": "Let c or cpp run anywhere,without repeat config.",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "asheor",
 	"icon": "icon/runAnywhere.bmp",
 	"repository": {},
